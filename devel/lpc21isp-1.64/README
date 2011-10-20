@@ -1,0 +1,4 @@
+This is stable lpc21isp version.
+It works well both with native COM ports as well as with USB COM ports.
+Newer versions not always work with USB COM ports.
+Do not remove it.
