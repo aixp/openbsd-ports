@@ -1,0 +1,21 @@
+$OpenBSD$
+--- samples/buildx86.orig	Tue Nov 16 02:56:30 1999
++++ samples/buildx86	Thu Oct 20 14:27:49 2011
+@@ -66,17 +66,3 @@ else 
+    exit 1
+ fi
+ cd ..
+-
+-cd X11
+-if xc =m Mand.mod +XAPP &&
+-   xc =m Mand2.mod +XAPP &&
+-   xc =m testx.mod +XAPP &&
+-   xc =m xmfonts.mod +XMAPP &&
+-   xc =m xmform.mod +XMAPP
+-then
+-   echo "X11 OK"
+-else 
+-   echo "X11 Error"
+-   exit 1
+-fi
+-cd ..

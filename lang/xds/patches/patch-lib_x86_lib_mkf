@@ -1,0 +1,15 @@
+$OpenBSD$
+--- lib/x86/lib.mkf.orig	Tue May 10 12:19:09 2005
++++ lib/x86/lib.mkf	Thu Oct 20 13:42:53 2011
+@@ -5,9 +5,8 @@ INCL	= $(XDSDIR)/include
+ XDSLIB	= libxds.a
+ LIBCMD	= libxds.tmp
+ 
+-CDEFS	= -D_unix -D_linux -DX2C_no_spawn -DX2C_strcmp -DX2C_native_library
+-CF	= -O2 -fno-strength-reduce -I$(INCL) -c
+-CC	= gcc
++CDEFS	= -D_unix -DX2C_no_spawn -DX2C_strcmp -DX2C_native_library
++CF	= $(CFLAGS) -O2 -fno-strength-reduce -I$(INCL) -c
+ OBJFF	=
+ 
+ # ------------------ objects enumeration ------------------
