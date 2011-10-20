@@ -1,0 +1,12 @@
+$OpenBSD$
+--- testSuite/TestEps_Trace.txt.orig	Wed Dec 19 19:24:50 2007
++++ testSuite/TestEps_Trace.txt	Wed Aug  3 16:39:43 2011
+@@ -10,7 +10,7 @@ Graph nodes:
+    4 alt                   0     0     2           0
+    5 t    b                0                      17
+    6 t    c              -12                      18
+-   7 sem                 -12                313    0
++   7 sem                 -12                330    0
+    8 alt                  12     9     6          18
+    9 alt                   0    11     7           0
+   10 t    d              -12                      18

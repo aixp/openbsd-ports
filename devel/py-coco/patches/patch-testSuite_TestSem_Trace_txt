@@ -1,0 +1,41 @@
+$OpenBSD$
+--- testSuite/TestSem_Trace.txt.orig	Wed Dec 19 19:24:56 2007
++++ testSuite/TestSem_Trace.txt	Wed Aug  3 16:40:35 2011
+@@ -7,28 +7,28 @@ Graph nodes:
+    1 nt   A                2                      29
+    2 nt   B                3                      29
+    3 nt   C                0                      29
+-   4 sem                   5                494    0
++   4 sem                   5                523    0
+    5 t    c              -11                      30
+-   6 sem                 -11                508    0
++   6 sem                 -11                537    0
+    7 alt                  11     8     4           0
+    8 alt                   0    10     6           0
+    9 t    d              -11                      30
+   10 alt                   0     0     9          30
+-  11 sem                   0                523    0
+-  12 sem                  15                538    0
++  11 sem                   0                552    0
++  12 sem                  15                568    0
+   13 t    a               14                      31
+-  14 sem                 -15                552    0
++  14 sem                 -15                582    0
+   15 iter                 16     0    13           0
+-  16 sem                  17                563    0
++  16 sem                  17                593    0
+   17 t    b               18                      31
+-  18 sem                   0                575    0
++  18 sem                   0                605    0
+   19 t    a              -23                      32
+   20 t    b              -23                      32
+   21 alt                  23    22    19          32
+   22 alt                   0     0    20          32
+-  23 sem                  24                622    0
++  23 sem                  24                653    0
+   24 t    c               25                      32
+-  25 sem                   0                633    0
++  25 sem                   0                664    0
+ 
+ 
+ First & follow symbols:

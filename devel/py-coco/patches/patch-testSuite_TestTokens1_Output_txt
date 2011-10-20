@@ -1,0 +1,15 @@
+$OpenBSD$
+--- testSuite/TestTokens1_Output.txt.orig	Wed Dec 19 19:25:02 2007
++++ testSuite/TestTokens1_Output.txt	Wed Aug  3 16:29:42 2011
+@@ -1,8 +1,8 @@
+ Coco/R v1.1.0rc for Python (May 16, 2007) - Translated by Ron Longo (ron.longo@cox.net)
+ 
+-file TestTokens1.atg : (17, 3) tokens B2 and B1 cannot be distinguished
+-file TestTokens1.atg : (19, 3) tokens C2 and C1 cannot be distinguished
+-file TestTokens1.atg : (21, 3) tokens S2 and S1 cannot be distinguished
++file TestTokens1.ATG : (17, 3) tokens B2 and B1 cannot be distinguished
++file TestTokens1.ATG : (19, 3) tokens C2 and C1 cannot be distinguished
++file TestTokens1.ATG : (21, 3) tokens S2 and S1 cannot be distinguished
+ Tokens ident and ident1 cannot be distinguished
+ Tokens S1 and S3 cannot be distinguished
+ Tokens number and X1 cannot be distinguished

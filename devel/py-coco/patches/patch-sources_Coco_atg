@@ -1,0 +1,13 @@
+$OpenBSD$
+--- sources/Coco.atg.orig	Thu Aug  4 18:55:06 2011
++++ sources/Coco.atg	Thu Aug  4 18:56:04 2011
+@@ -245,7 +245,8 @@ SimSet<out s>                   (. n1 = 0
+ 
+ | "ANY"                         (. s = set( )
+                                    for num in xrange( 0, CharClass.charSetSize ):
+-                                      s.add(num)              .)
++                                      s.add(num)
++                                   s.add("ANYCHAR")              .)
+ )
+ .
+ 

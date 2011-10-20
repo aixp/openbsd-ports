@@ -1,0 +1,11 @@
+$OpenBSD$
+--- DriverGen.py.orig	Thu Dec  6 22:01:28 2007
++++ DriverGen.py	Wed Aug  3 23:15:38 2011
+@@ -53,6 +53,7 @@ class DriverGen( object ):
+       #DriverGen.codeGen.write( Tab.gramSy.name )
+       DriverGen.codeGen.CopyFramePart( '$$$' )
+       DriverGen.codeGen.close( )
++      os.chmod(fn, 0755)
+ 
+    @staticmethod
+    def Init( f, dir ):

@@ -1,0 +1,11 @@
+what is about pimaker and sources?
+
+fix tests (new ANY enhacement related):
+	some integer instead of 'ANYCHAR'
+
+newline problem:
+	IGNORE CHR(9) .. CHR(13) does not work, but IGNORE CHR(9) + CHR(10) + CHR(13) works
+
+move to lang category?
+
+leave testSuite

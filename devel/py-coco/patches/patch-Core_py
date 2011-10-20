@@ -1,0 +1,21 @@
+$OpenBSD$
+--- Core.py.orig	Wed Dec 19 17:28:36 2007
++++ Core.py	Tue Aug  9 13:33:20 2011
+@@ -650,7 +650,7 @@ class Tab:
+ 
+    @staticmethod
+    def parseArgs( argv, testArgCt=False ):
+-      usage = 'usage: %prog [options] filename.atg'
++      usage = 'usage: %prog [options] filename.ATG'
+       optParser = OptionParser( usage )
+       optParser.add_option( '-a', '-A', dest='traceAutomaton',
+                          action='store_true', default=False,
+@@ -1652,6 +1652,8 @@ class DFA( object ):
+             if i < top:
+                DFA.gen.write('\n')
+                DFA.gen.write("                 or ")
++         if 'ANYCHAR' in s:
++            DFA.gen.write(' or ord(self.ch) > %d' % CharClass.charSetSize)
+          DFA.gen.write(")")
+ 
+         #---------- String handling
