@@ -1,0 +1,11 @@
+--- Makefile.orig	Tue Feb  1 17:40:38 2011
++++ Makefile	Tue Feb  1 17:40:43 2011
+@@ -39,7 +39,7 @@
+ 			--with-screeen=slang \
+ 			--with-subshell \
+ 			--with-vfs \
+-			--with-samba \
++			--without-samba \
+ 			--enable-charset
+ CONFIGURE_ENV=		LOCALBASE=${LOCALBASE} \
+ 			LIBS="-lm"
