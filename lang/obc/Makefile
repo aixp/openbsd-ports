@@ -1,6 +1,6 @@
 # $OpenBSD: Makefile,v 1.1.1.1 2011/01/15 13:07:50 jasper Exp $
 
-# Fatal error: assertion sizeof(page_index) == GC_PAGESIZE failed on line 1090 of file gc.c
+# Fatal error: assertion sizeof(page_index) == GC_PAGESIZE failed on line 1110 of file gc.c
 ONLY_FOR_ARCHS= i386
 
 SHARED_ONLY =	Yes
