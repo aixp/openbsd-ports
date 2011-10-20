@@ -1,6 +1,8 @@
 MODULE CoordTransformTest;
 
 	(*
+		Encoding of this file is KOI8-R
+
 		А. В. Ширяев, 2011.05
 	*)
 

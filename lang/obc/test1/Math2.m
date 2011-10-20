@@ -1,6 +1,8 @@
 MODULE Math2;
 
 	(*
+		Encoding of this file is KOI8-R
+
 		А. В. Ширяев, 2010.02, 2011.05
 	*)
 
