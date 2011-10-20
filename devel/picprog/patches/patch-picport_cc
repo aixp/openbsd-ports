@@ -1,7 +1,7 @@
 $OpenBSD$
 --- picport.cc.orig	Wed Apr 14 05:45:20 2010
-+++ picport.cc	Sun Feb 27 18:39:22 2011
-@@ -38,7 +38,6 @@ make sure your email passes my spam filtering.
++++ picport.cc	Thu Oct 20 22:23:03 2011
+@@ -38,13 +38,13 @@ make sure your email passes my spam filtering.
  #include <ctime>
  
  #include <sys/ioctl.h>
@@ -9,7 +9,23 @@ $OpenBSD$
  #include <fcntl.h>
  #include <sys/time.h>
  #include <unistd.h>
-@@ -155,13 +154,11 @@ picport::picport (const char *tty, bool nordtsc, bool 
+ #include <termios.h>
+ #include <sysexits.h>
+ #include <sched.h>
++#include <assert.h>
+ 
+ #include "picport.h"
+ 
+@@ -115,7 +115,7 @@ picport::picport (const char *tty, bool nordtsc, bool 
+   for (int i = 0; i < 16; ++i)
+     W [i] = 0;
+   portname = new char [strlen (tty) + 1];
+-  strcpy (portname, tty);
++  int rCheckSNPrintF0 = snprintf(portname, sizeof(portname), "%s", tty); assert( (rCheckSNPrintF0 >= 0) && ((unsigned int)rCheckSNPrintF0 < sizeof(portname)) );
+ 
+   if (0 > (fd = open (tty, O_RDWR|O_NOCTTY|O_NONBLOCK))) {
+     int e = errno;
+@@ -155,13 +155,11 @@ picport::picport (const char *tty, bool nordtsc, bool 
    // sched_get_priority_max()
    // scp.sched_priority = 50;
    cerr << "Trying realtime priority " << scp.sched_priority << endl;
