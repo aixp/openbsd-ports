@@ -1,4 +1,4 @@
-fatal error asserion line number updated?
+support non-i386 architectures (at least AMD64)
 
 CoordTransformTest regression test:
 	temporary solution implemented (mprotect call moved to other place)
