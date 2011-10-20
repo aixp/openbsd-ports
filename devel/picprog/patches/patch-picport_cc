@@ -1,0 +1,26 @@
+$OpenBSD$
+--- picport.cc.orig	Wed Apr 14 05:45:20 2010
++++ picport.cc	Sun Feb 27 18:39:22 2011
+@@ -38,7 +38,6 @@ make sure your email passes my spam filtering.
+ #include <ctime>
+ 
+ #include <sys/ioctl.h>
+-#include <sys/io.h>
+ #include <fcntl.h>
+ #include <sys/time.h>
+ #include <unistd.h>
+@@ -155,13 +154,11 @@ picport::picport (const char *tty, bool nordtsc, bool 
+   // sched_get_priority_max()
+   // scp.sched_priority = 50;
+   cerr << "Trying realtime priority " << scp.sched_priority << endl;
+-  if (sched_setscheduler (0, SCHED_FIFO, &scp)) {
++  {
+     cerr << "Cannot use real time scheduling: " << strerror(errno) << endl;
+     // Not root.  Cannot use realtime scheduling.
+     use_nanosleep = 0;
+   }
+-  if (iopl (3))
+-    disable_interrupts = 0;
+ 
+ #ifdef CPU_SETSIZE
+   // When computing the delay loops, we do not want the cpu's to change.

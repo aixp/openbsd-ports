@@ -1,0 +1,12 @@
+$OpenBSD$
+--- Makefile.orig	Wed Apr 14 05:19:53 2010
++++ Makefile	Sun Feb 27 18:42:21 2011
+@@ -28,7 +28,7 @@
+ 
+ CXX=g++
+ CXXFLAGS=-O2 -Wall -W -Wwrite-strings
+-LDFLAGS=-s
++LDFLAGS=-s -pthread
+ 
+ OBJS=main.o picport.o hexfile.o program.o
+ PROG=picprog

@@ -1,0 +1,11 @@
+--- Imakefile.orig	Sun Jul  1 16:19:02 2007
++++ Imakefile	Sun Jul  1 16:20:05 2007
+@@ -3,7 +3,7 @@
+ BASEDIR = $(PROJECTROOT)
+ BINDIR = $(BASEDIR)/bin
+ PIXMAPDIR = $(BASEDIR)/share/xxkb
+-LOCAL_LIBRARIES = $(XONLYLIB) -lXpm -lXt
++LOCAL_LIBRARIES = $(XONLYLIB) $(XPMLIB) $(XTOOLLIB) $(EXTENSIONLIB)
+ 
+ OBJS = xxkb.o resource.o wlist.o
+ PIXMAPS = pixmaps/by15.xpm pixmaps/by48.xpm \

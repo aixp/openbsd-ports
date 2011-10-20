@@ -1,0 +1,7 @@
+is rest of FreeBSD patches really required?
+
+check audio stuff
+
+devel/xdg-utils to RUN_DEPENDS?
+
+WANTLIB: make port-lib-depends-check

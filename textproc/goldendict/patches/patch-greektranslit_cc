@@ -1,0 +1,9 @@
+$OpenBSD$
+--- greektranslit.cc.orig	Sat Dec  4 00:12:46 2010
++++ greektranslit.cc	Wed Oct 19 16:04:11 2011
+@@ -1,4 +1,4 @@
+-﻿/* This file is (c) 2010 Jennie Petoumenou <epetoumenou@gmail.com>
++/* This file is (c) 2010 Jennie Petoumenou <epetoumenou@gmail.com>
+  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
+ 
+ #include "greektranslit.hh"

@@ -1,0 +1,5 @@
+This is xxkb port without icons support.
+
+To use it add this line at begin of ~/.xinitrc to start xxkb when X starts:
+
+xxkb &

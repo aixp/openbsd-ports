@@ -1,0 +1,22 @@
+@comment $OpenBSD$
+@bin bin/goldendict
+share/applications/
+share/applications/goldendict.desktop
+share/apps/
+share/apps/goldendict/
+share/apps/goldendict/locale/
+share/apps/goldendict/locale/ar_SA.qm
+share/apps/goldendict/locale/bg_BG.qm
+share/apps/goldendict/locale/cs_CZ.qm
+share/apps/goldendict/locale/de_DE.qm
+share/apps/goldendict/locale/el_GR.qm
+share/apps/goldendict/locale/it_IT.qm
+share/apps/goldendict/locale/lt_LT.qm
+share/apps/goldendict/locale/ru_RU.qm
+share/apps/goldendict/locale/uk_UA.qm
+share/apps/goldendict/locale/vi_VN.qm
+share/apps/goldendict/locale/zh_CN.qm
+share/pixmaps/
+share/pixmaps/goldendict.png
+@exec %D/bin/update-desktop-database
+@unexec-delete %D/bin/update-desktop-database

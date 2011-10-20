@@ -1,0 +1,11 @@
+$OpenBSD$
+--- testport.cc.orig	Sun Feb 27 18:41:14 2011
++++ testport.cc	Sun Feb 27 18:41:18 2011
+@@ -38,7 +38,6 @@ make sure your email passes my spam filtering.
+ #include <ctime>
+ 
+ #include <sys/ioctl.h>
+-#include <sys/io.h>
+ #include <fcntl.h>
+ #include <sys/time.h>
+ #include <unistd.h>

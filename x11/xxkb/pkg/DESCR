@@ -1,0 +1,4 @@
+Xxkb is a simple XKB keyboard mapping switcher. It maintains an active
+keyboard mapping on a per-window basis.
+
+Xxkb works with virtually any window manager.
