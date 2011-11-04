@@ -1,5 +1,7 @@
 is rest of FreeBSD patches really required?
 
+Xorg crashes
+
 check audio stuff
 
 devel/xdg-utils to RUN_DEPENDS?
