@@ -1,0 +1,12 @@
+$OpenBSD$
+--- C/x86/xosTime.c.orig	Sun Aug 16 15:49:18 1998
++++ C/x86/xosTime.c	Fri Dec 30 13:59:40 2011
+@@ -84,7 +84,7 @@ extern void X2C_UnpackTime(t, res) 
+         tzset();
+ #endif
+ 
+-#if defined(__FreeBSD__) || \
++#if (defined(__FreeBSD__) || defined(__OpenBSD__)) || \
+     (defined(__ultrix) && !defined(SYSTEM_FIVE)) || \
+     defined(DJGPP)
+         res->zone = p->tm_gmtoff / 60;

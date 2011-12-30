@@ -1,6 +1,6 @@
 $OpenBSD$
---- samples/buildx86.orig	Tue Nov 16 02:56:30 1999
-+++ samples/buildx86	Thu Oct 20 14:27:49 2011
+--- samples/buildx86.orig	Fri Dec 30 19:09:27 2011
++++ samples/buildx86	Fri Dec 30 19:09:49 2011
 @@ -66,17 +66,3 @@ else 
     exit 1
  fi

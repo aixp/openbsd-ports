@@ -1,42 +1,22 @@
 $OpenBSD$
---- bin/xcwork.orig	Tue Nov 16 02:46:28 1999
-+++ bin/xcwork	Thu Oct 20 12:55:59 2011
-@@ -1,34 +1,5 @@
- #!/bin/sh
- 
--DoCreate() {
--	echo "creating directory structure..."
--	for DIR in def obj src sym; do
--		if ! test -d $DIR
--		then
--			if ! mkdir $DIR
--			then
--				echo "Error making $DIR subdirectory"
--				exit 1
--			fi
--		fi
--	done
--	echo "creating appropriate redirection file..."
--	cat >xc.red  <<EOTXT
+--- bin/xcwork.orig	Fri Dec 30 19:21:59 2011
++++ bin/xcwork	Fri Dec 30 19:25:56 2011
+@@ -14,10 +14,10 @@ DoCreate() {
+ 	done
+ 	echo "creating appropriate redirection file..."
+ 	cat >xc.red  <<EOTXT
 -xc.*   = $XDSDIR/bin
 -*.tem  = $XDSDIR/bin
 -*.sym  = ./sym;$XDSDIR/sym/x86
 -*.a    = .;$XDSDIR/lib/x86
--*.o    = ./obj
--*.def  = ./def
--*.mod  = ./src
--*.ob2  = ./src
--*.prj  = .
--EOTXT
--	echo
--	echo    "DONE"
--	echo
--}
--
- echo
- echo "==============================================================="
- echo " Native XDS-x86 2.4 Linux Edition."
-@@ -40,36 +11,29 @@ echo " file in the current directory."
++xc.*   = %%XDSDIR%%/bin
++*.tem  = %%XDSDIR%%/bin
++*.sym  = ./sym;%%XDSDIR%%/sym/x86
++*.a    = .;%%XDSDIR%%/lib/x86
+ *.o    = ./obj
+ *.def  = ./def
+ *.mod  = ./src
+@@ -40,36 +40,4 @@ echo " file in the current directory."
  echo "==============================================================="
  echo
  
@@ -73,29 +53,4 @@ $OpenBSD$
 -	echo    "-------------------------------------------------------------"
 -
 -fi
-+echo "creating directory structure..."
-+for DIR in def obj src sym; do
-+	if ! test -d $DIR
-+	then
-+		if ! mkdir $DIR
-+		then
-+			echo "Error making $DIR subdirectory"
-+			exit 1
-+		fi
-+	fi
-+done
-+echo "creating appropriate redirection file..."
-+cat >xc.red  <<EOTXT
-+xc.*   = %%XDSDIR%%/bin
-+*.tem  = %%XDSDIR%%/bin
-+*.sym  = ./sym;%%XDSDIR%%/sym/x86
-+*.a    = .;%%XDSDIR%%/lib/x86
-+*.o    = ./obj
-+*.def  = ./def
-+*.mod  = ./src
-+*.ob2  = ./src
-+*.prj  = .
-+EOTXT
-+echo
-+echo    "DONE"
-+echo
++DoCreate

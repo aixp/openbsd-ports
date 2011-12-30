@@ -1,0 +1,12 @@
+$OpenBSD$
+--- C/C/xosBalls.c.orig	Wed Nov 16 16:16:45 2011
++++ C/C/xosBalls.c	Fri Dec 30 14:02:37 2011
+@@ -17,7 +17,7 @@ static X2C_CARD32 numBlocks;
+ extern X2C_ADDRESS X2C_initBalls(X2C_CARD32 nBlocks, X2C_CARD32 blockSize)
+ {
+    bSize = blockSize;
+-   heapBase = mmap(0, nBlocks*bSize, 0UL, 34UL, -1L, 0UL);
++   heapBase = mmap(0, nBlocks*bSize, 0UL, 0x1000|0x2, -1L, 0UL);
+    return heapBase;
+ } /* end X2C_initBalls() */
+ 

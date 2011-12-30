@@ -1,7 +1,7 @@
 $OpenBSD$
---- C/X2C.c.orig	Thu Oct 20 13:37:07 2011
-+++ C/X2C.c	Thu Oct 20 13:37:54 2011
-@@ -700,7 +700,7 @@ static void init_coroutines(stk_start) X2C_ADDRESS stk
+--- C/C/X2C.c.orig	Tue Sep 20 14:13:35 2011
++++ C/C/X2C.c	Fri Dec 30 13:21:46 2011
+@@ -702,7 +702,7 @@ static void init_coroutines(stk_start) X2C_ADDRESS stk
  	iprocs[3]=iproc3;
  	iprocs_cnt=4;
  

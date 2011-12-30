@@ -1,30 +1,13 @@
 $OpenBSD$
---- bin/xc.tem.orig	Tue Feb 18 10:41:00 2003
-+++ bin/xc.tem	Thu Oct 20 14:15:40 2011
+--- bin/xc.tem.orig	Tue Sep 13 15:06:45 2011
++++ bin/xc.tem	Fri Dec 30 13:43:00 2011
 @@ -1,4 +1,4 @@
 -!set link = "make -f %s", mkfname#mkfext
 +!set link = "gmake -f %s", mkfname#mkfext
  ! "M\t= %s\n",mkfname#>mkfext
  
  !if defined topspeed then
-@@ -19,14 +19,10 @@
- 
- !if xmapp then
-   ! "XLIBS\t= -L/usr/X11R6/lib -lXm -lXt -lX11\n"
--  !if (env_target="x86linux") then
--    ! "XMACLIBS\t= %s %s\n","libmac_X11"#libext,"libmac_Xm"#libext
--  !end
-+  ! "XMACLIBS\t= %s %s\n","libmac_X11"#libext,"libmac_Xm"#libext
- !elsif xapp then
-   ! "XLIBS\t= -L/usr/X11R6/lib -lX11\n"
--  !if (env_target="x86linux") then
--    ! "XMACLIBS\t= %s\n","libmac_X11"#libext
--  !end
-+  ! "XMACLIBS\t= %s\n","libmac_X11"#libext
- !end
- 
- !if genlib then
-@@ -58,9 +54,8 @@
+@@ -58,9 +58,8 @@
    ! "CC\t= cc\n"
    !new ccomp = $$(CC) $$(CDEFS) $$(CF) -o %s %s
  !elsif (env_target="linux") or (env_target="x86linux") then
@@ -35,18 +18,15 @@ $OpenBSD$
    !if defined linuxaout_support and linuxaout_support then
    !  "OBJFF\t= -bi486-linuxaout\n"
    !else
-@@ -99,11 +94,11 @@
+@@ -99,9 +98,9 @@
  !else
    ! "$(TARGET) : $(OBJ) $(XDSLIB)\n"
    !if (env_target="x86linux") then
 -    ! "\tgcc $(LFLAGS) -o $(TARGET) $(OBJ) $(XLIBS) $(TSLIBS) $(XDSLIB) $(XMACLIBS) -lm -lncurses\n"
-+    ! "\t$(CC) $(LFLAGS) -L/usr/X11R6/lib -L/usr/local/lib -o $(TARGET) $(OBJ) $(XLIBS) $(TSLIBS) $(XDSLIB) $(XMACLIBS) -lm -lncurses\n"
++    ! "\t$(CC) $(LFLAGS) -o $(TARGET) $(OBJ) $(XLIBS) $(TSLIBS) $(XDSLIB) $(XMACLIBS) -lm -lncurses\n"
    !elsif (env_target="linux") or (env_target="aix") then
 -    ! "\tgcc $(LFLAGS) -o $(TARGET) $(OBJFF) $(OBJ) $(XLIBS) $(XDSLIB) -lm\n"
 +    ! "\t$(CC) $(LFLAGS) -o $(TARGET) $(OBJFF) $(OBJ) $(XLIBS) $(XDSLIB) -lm\n"
    !else
--    ! "\tcc $(LFLAGS) -o $(TARGET) $(OBJ) $(XLIBS) $(XDSLIB) -lm\n"
-+    ! "\t$(CC) $(LFLAGS) -o $(TARGET) $(OBJ) $(XLIBS) $(XDSLIB) -lm\n"
+     ! "\tcc $(LFLAGS) -o $(TARGET) $(OBJ) $(XLIBS) $(XDSLIB) -lm\n"
    !end
- !end
- 

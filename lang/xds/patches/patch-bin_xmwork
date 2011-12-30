@@ -1,0 +1,20 @@
+$OpenBSD$
+--- bin/xmwork.orig	Fri Dec 30 19:22:02 2011
++++ bin/xmwork	Fri Dec 30 19:26:50 2011
+@@ -1,11 +1,11 @@
+ echo '    creating directory structure...'
+ mkdir ch def obj src sym
+ echo '    creating redirection file...'
+-echo >xm.red  'xm.msg = $(XDSDIR)/bin'
+-echo >>xm.red 'xm.cfg = $(XDSDIR)/bin'
+-echo >>xm.red '*.tem  = $(XDSDIR)/bin'
+-echo >>xm.red '*.a    = $(XDSDIR)/lib/C'
+-echo >>xm.red '*.sym  = $!/sym;$(XDSDIR)/sym/C'
++echo >xm.red  'xm.msg = %%XDSDIR%%/bin'
++echo >>xm.red 'xm.cfg = %%XDSDIR%%/bin'
++echo >>xm.red '*.tem  = %%XDSDIR%%/bin'
++echo >>xm.red '*.a    = %%XDSDIR%%/lib/C'
++echo >>xm.red '*.sym  = $!/sym;%%XDSDIR%%/sym/C'
+ echo >>xm.red '*.o    = $!/obj'
+ echo >>xm.red '*.def  = $!/def'
+ echo >>xm.red '*.mod  = $!/src'
