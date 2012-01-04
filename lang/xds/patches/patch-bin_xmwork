@@ -1,6 +1,6 @@
 $OpenBSD$
---- bin/xmwork.orig	Fri Dec 30 19:22:02 2011
-+++ bin/xmwork	Fri Dec 30 19:26:50 2011
+--- bin/xmwork.orig	Wed Nov 16 16:16:42 2011
++++ bin/xmwork	Wed Jan  4 13:18:22 2012
 @@ -1,11 +1,11 @@
  echo '    creating directory structure...'
  mkdir ch def obj src sym
@@ -18,3 +18,9 @@ $OpenBSD$
  echo >>xm.red '*.o    = $!/obj'
  echo >>xm.red '*.def  = $!/def'
  echo >>xm.red '*.mod  = $!/src'
+@@ -13,4 +13,5 @@ echo >>xm.red '*.ob2  = $!/src'
+ echo >>xm.red '*.prj  = $!'
+ echo >>xm.red '*.c    = $!/ch'
+ echo >>xm.red '*.h    = $!/ch'
++touch xm.kwd
+ echo '    DONE'

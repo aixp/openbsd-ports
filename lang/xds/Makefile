@@ -7,6 +7,8 @@ COMMENT =		Excelsior Oberon-2/Modula-2 compiler
 DISTNAME =		xds-260-beta-linux
 PKGNAME =		xds-2.60-beta
 
+REVISION =		0
+
 CATEGORIES =		lang
 
 HOMEPAGE =		http://www.excelsior-usa.com/
@@ -26,7 +28,7 @@ USE_GMAKE =		Yes
 
 WRKDIST =		${WRKDIR}/xds
 
-post-patch:
+pre-build:
 	perl -pi -e s,'%%XDSDIR%%',${PREFIX}/xds,g ${WRKSRC}/bin/xcwork
 	perl -pi -e s,'%%XDSDIR%%',${PREFIX}/xds,g ${WRKSRC}/bin/xmwork
 
@@ -34,11 +36,9 @@ post-build:
 	cd ${WRKSRC} && env PATH=${WRKSRC}/bin ./apisyms-x86 && env PATH=${WRKSRC}/bin ./apisyms-c
 
 do-install:
-	rm -rf ${WRKSRC}/C ${WRKSRC}/include
+	rm -rf ${WRKSRC}/C
 	rm -f \
 		${WRKSRC}/lib/x86/libmac_*.a \
-		${WRKSRC}/lib/x86/libts.a \
-		${WRKSRC}/lib/C/libts.a \
 		${WRKSRC}/*.prj \
 		${WRKSRC}/apisyms-* \
 		${WRKSRC}/bin/xdssamp
@@ -65,6 +65,8 @@ do-regress:
 
 do-build:
 	cd ${WRKSRC}/lib/x86 && gmake -f lib.mkf
+	cd ${WRKSRC}/lib/x86 && gmake -f tslib.mkf
 	cd ${WRKSRC}/lib/C && gmake -f lib.mkf
+	cd ${WRKSRC}/lib/C && gmake -f tslib.mkf
 
 .include <bsd.port.mk>

@@ -1,0 +1,16 @@
+$OpenBSD$
+--- lib/C/tslib.mkf.orig	Wed Jan  4 13:32:55 2012
++++ lib/C/tslib.mkf	Wed Jan  4 13:33:53 2012
+@@ -8,10 +8,9 @@ INCLTS	= $(TSCPDIR)/include/C
+ TSLIB	= libts.a
+ LIBCMD	= libts.tmp
+ 
+-CDEFS	= -D_unix -D_linux -DX2C_no_spawn -DX2C_strcmp
++CDEFS	= -D_unix -DX2C_no_spawn -DX2C_strcmp
+ #  ! "CF\t= -O2 -fno-strength-reduce -I$(INCL) -c\n"
+-CF	= -fno-strength-reduce -I$(INCL) -c
+-CC	= gcc
++CF	= $(CFLAGS) -fno-strength-reduce -I$(INCL) -c
+ OBJFF	=
+ 
+ # ------------------ objects enumeration ------------------

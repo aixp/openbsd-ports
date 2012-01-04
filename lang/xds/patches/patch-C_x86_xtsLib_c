@@ -1,0 +1,12 @@
+$OpenBSD$
+--- C/x86/xtsLib.c.orig	Wed Jan  4 13:48:05 2012
++++ C/x86/xtsLib.c	Wed Jan  4 13:48:13 2012
+@@ -37,6 +37,8 @@ void xtsLib_Speaker(X2C_CARD32 FreqHz, X2C_CARD32 Time
+ }
+ #endif
+ 
++extern char **environ;
++
+ void xtsLib_Environment(X2C_CARD32 N, X2C_CHAR result[], X2C_CARD32 resultLen) {
+ #if defined(_linux)
+     char *p = __environ[N];
