@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# $OpenBSD$
+
+cd %%LOCALBASE%%/%%INST_DIR%% && exec ./freemind.sh "$@"
