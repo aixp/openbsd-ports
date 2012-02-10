@@ -4,10 +4,10 @@ ONLY_FOR_ARCHS =	i386
 
 COMMENT =		Excelsior Oberon-2/Modula-2 compiler
 
-DISTNAME =		xds-260-beta-linux
-PKGNAME =		xds-2.60-beta
+DISTNAME =		xds-260-beta2-linux
+PKGNAME =		xds-2.60-beta2
 
-REVISION =		0
+#REVISION =		0
 
 CATEGORIES =		lang
 
@@ -46,7 +46,7 @@ do-install:
 	find ${WRKSRC} -name "*.mkf" -exec rm -f {} \;
 	find ${WRKSRC} -type d -exec chmod 755 {} \;
 	find ${WRKSRC} -type f -exec chmod 644 {} \;
-	cd ${WRKSRC} && chmod 755 bin/xm bin/xmwork bin/xc bin/xcwork samples/buildx86
+	cd ${WRKSRC} && chmod 755 bin/xm bin/xmwork bin/xc bin/xcwork samples/buildx86 samples/buildc
 	mkdir ${PREFIX}/xds && cd ${WRKSRC} && pax -r -w . ${PREFIX}/xds
 
 post-install:

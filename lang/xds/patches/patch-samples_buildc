@@ -1,17 +1,17 @@
 $OpenBSD$
---- samples/buildc.orig	Fri Dec 30 19:17:25 2011
-+++ samples/buildc	Fri Dec 30 19:17:33 2011
-@@ -53,17 +53,3 @@ else 
+--- samples/buildc.orig	Sat Feb 11 03:07:29 2012
++++ samples/buildc	Sat Feb 11 03:07:40 2012
+@@ -55,17 +55,3 @@ else 
     exit 1
  fi
  cd ..
 -
 -cd X11
--if xm =m Mand.mod +XAPP &&
--   xm =m Mand2.mod +XAPP &&
--   xm =m testx.mod +XAPP &&
--   xm =m xmfonts.mod +XMAPP &&
--   xm =m xmform.mod +XMAPP
+-if xm =m =a Mand.mod +XAPP &&
+-   xm =m =a Mand2.mod +XAPP &&
+-   xm =m =a testx.mod +XAPP &&
+-   xm =m =a xmfonts.mod +XMAPP &&
+-   xm =m =a xmform.mod +XMAPP
 -then
 -   echo "X11 OK"
 -else 
