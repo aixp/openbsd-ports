@@ -1,22 +1,21 @@
 MAIN GOAL:
-    edit eps files, formulas, russian language
+	edit eps files, formulas, russian language
 
-gsfonts run depend, gsfont fontmap ...
+texlive-fontmap.xml:
+	texmf -> texmf-dist ?
 
 - CXX = g++
 - CXXFLAGS += ...
-
-DESCR
 
 Help -> Ipe manual does not work
 
 fix pdflatex fonts problem
 
-    add following to document preamble:
-	\usepackage[utf8]{inputenc}
-	\usepackage[russian]{babel}
-	\usepackage{pscyr}
-    but math symbols problem :(
+	add following to document preamble:
+		\usepackage[utf8]{inputenc}
+		\usepackage[russian]{babel}
+		% \usepackage{pscyr}
+		\usepackage{amsmath}
 
 low priority:
 	lua ipe module (symlink?): don't works :(

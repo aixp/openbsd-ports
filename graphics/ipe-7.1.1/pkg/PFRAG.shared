@@ -1,7 +1,0 @@
-@comment $OpenBSD$
-lib/ipe/ipelets/image.so
-lib/libipe.so
-lib/libipecairo.so
-lib/libipelua.so
-lib/libipeqtcanvas.so
-lib/libipeui.so
