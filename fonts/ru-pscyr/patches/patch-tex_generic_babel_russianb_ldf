@@ -1,0 +1,28 @@
+$OpenBSD$
+--- tex/generic/babel/russianb.ldf.orig	Sat Apr 12 16:47:35 2008
++++ tex/generic/babel/russianb.ldf	Wed Aug  8 14:42:26 2012
+@@ -68,6 +68,7 @@
+    \reserved@a{#1}{LWN}%
+    \reserved@a{#1}{LCY}%
+    \reserved@a{#1}{X2}%
++   \reserved@a{#1}{T2D}%
+    \reserved@a{#1}{T2C}%
+    \reserved@a{#1}{T2B}%
+    \reserved@a{#1}{T2A}}
+@@ -77,6 +78,7 @@
+   \IfFileExists{lwnenc.def}{\def\cyrillicencoding{LWN}}\relax
+   \IfFileExists{lcyenc.def}{\def\cyrillicencoding{LCY}}\relax
+   \IfFileExists{x2enc.def}{\def\cyrillicencoding{X2}}\relax
++  \IfFileExists{t2denc.def}{\def\cyrillicencoding{T2D}}\relax
+   \IfFileExists{t2cenc.def}{\def\cyrillicencoding{T2C}}\relax
+   \IfFileExists{t2benc.def}{\def\cyrillicencoding{T2B}}\relax
+   \IfFileExists{t2aenc.def}{\def\cyrillicencoding{T2A}}\relax
+@@ -86,7 +88,7 @@
+       {Your installation is incomplete.\MessageBreak
+        You need at least one of the following files:\MessageBreak
+        \space\space
+-       x2enc.def, t2aenc.def, t2benc.def, t2cenc.def,\MessageBreak
++       x2enc.def, t2aenc.def, t2benc.def, t2cenc.def, t2denc.def,\MessageBreak
+        \space\space
+        lcyenc.def, lwnenc.def, ot2enc.def.}%
+   \else

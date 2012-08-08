@@ -1,0 +1,11 @@
+$OpenBSD$
+--- dvips/pscyr/pscyr.map.orig	Wed Aug  8 16:06:43 2012
++++ dvips/pscyr/pscyr.map	Wed Aug  8 14:49:04 2012
+@@ -9,6 +9,7 @@ facri8r  AcademyPSCyr-Italic "TeXBase1Encoding ReEncod
+ facro6a  AcademyPSCyr-Regular ".167 SlantFont T2AEncoding ReEncodeFont" <t2a.enc <acade2.pfb
+ facro8r  AcademyPSCyr-Regular ".167 SlantFont TeXBase1Encoding ReEncodeFont" <8r.enc <acade2.pfb
+ fadr6a   AdvertisementPSCyr "T2AEncoding ReEncodeFont" <t2a.enc <adver4.pfb
++fadr6t   AdvertisementPSCyr "T2AEncoding ReEncodeFont" <t2a.enc <adver4.pfb
+ fadr8r   AdvertisementPSCyr "TeXBase1Encoding ReEncodeFont" <8r.enc <adver4.pfb
+ faqb6a   AntiquaPSCyr-Bold "T2AEncoding ReEncodeFont" <t2a.enc <antiq7.pfb
+ faqb8r   AntiquaPSCyr-Bold "TeXBase1Encoding ReEncodeFont" <8r.enc <antiq7.pfb
