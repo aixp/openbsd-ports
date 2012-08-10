@@ -4,7 +4,7 @@ COMMENT=		cyrillic PostScript Type1 fonts to use with TeX
 
 DISTNAME=		pscyr-0.4d_beta9
 PKGNAME=		ru-${DISTNAME}
-REVISION=		0
+REVISION=		1
 CATEGORIES=		fonts russian print
 
 MAINTAINER=		Alexander Yurchenko <grange@openbsd.org>
