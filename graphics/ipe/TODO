@@ -12,10 +12,16 @@ Help -> Ipe manual does not work
 fix pdflatex fonts problem
 
 	add following to document preamble:
+
+		\usepackage{cmap}
 		\usepackage[utf8]{inputenc}
-		\usepackage[russian]{babel}
-		% \usepackage{pscyr}
+		\usepackage[english,russian]{babel}
+		% \usepackage[math]{pscyr}
+		% \usepackage[T2A]{fontenc}
+		% \usepackage{mathtext}
+		% \usepackage{amstext}
 		\usepackage{amsmath}
+		% \usepackage{amssymb}
 
 low priority:
 	lua ipe module (symlink?): don't works :(
