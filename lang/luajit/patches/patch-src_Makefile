@@ -1,0 +1,111 @@
+$OpenBSD$
+--- src/Makefile.orig	Tue Oct 16 12:30:00 2012
++++ src/Makefile	Wed Oct 17 10:36:36 2012
+@@ -588,45 +588,45 @@ depend:
+ ##############################################################################
+ 
+ $(MINILUA_T): $(MINILUA_O)
+-	$(E) "HOSTLINK  $@"
++	$(E) $(Q)$(HOST_CC) $(HOST_ALDFLAGS) -o $@ $(MINILUA_O) $(MINILUA_LIBS) $(HOST_ALIBS)
+ 	$(Q)$(HOST_CC) $(HOST_ALDFLAGS) -o $@ $(MINILUA_O) $(MINILUA_LIBS) $(HOST_ALIBS)
+ 
+ host/buildvm_arch.h: $(DASM_DASC) $(DASM_DEP)
+-	$(E) "DYNASM    $@"
++	$(E) $(Q)$(DASM) $(DASM_FLAGS) -o $@ $(DASM_DASC)
+ 	$(Q)$(DASM) $(DASM_FLAGS) -o $@ $(DASM_DASC)
+ 
+ host/buildvm.o: $(DASM_DIR)/dasm_*.h
+ 
+ $(BUILDVM_T): $(BUILDVM_O)
+-	$(E) "HOSTLINK  $@"
++	$(E) $(Q)$(HOST_CC) $(HOST_ALDFLAGS) -o $@ $(BUILDVM_O) $(HOST_ALIBS)
+ 	$(Q)$(HOST_CC) $(HOST_ALDFLAGS) -o $@ $(BUILDVM_O) $(HOST_ALIBS)
+ 
+ $(LJVM_BOUT): $(BUILDVM_T)
+-	$(E) "BUILDVM   $@"
++	$(E) $(Q)$(BUILDVM_X) -m $(LJVM_MODE) -o $@
+ 	$(Q)$(BUILDVM_X) -m $(LJVM_MODE) -o $@
+ 
+ lj_bcdef.h: $(BUILDVM_T) $(LJLIB_C)
+-	$(E) "BUILDVM   $@"
++	$(E) $(Q)$(BUILDVM_X) -m bcdef -o $@ $(LJLIB_C)
+ 	$(Q)$(BUILDVM_X) -m bcdef -o $@ $(LJLIB_C)
+ 
+ lj_ffdef.h: $(BUILDVM_T) $(LJLIB_C)
+-	$(E) "BUILDVM   $@"
++	$(E) $(Q)$(BUILDVM_X) -m ffdef -o $@ $(LJLIB_C)
+ 	$(Q)$(BUILDVM_X) -m ffdef -o $@ $(LJLIB_C)
+ 
+ lj_libdef.h: $(BUILDVM_T) $(LJLIB_C)
+-	$(E) "BUILDVM   $@"
++	$(E) $(Q)$(BUILDVM_X) -m libdef -o $@ $(LJLIB_C)
+ 	$(Q)$(BUILDVM_X) -m libdef -o $@ $(LJLIB_C)
+ 
+ lj_recdef.h: $(BUILDVM_T) $(LJLIB_C)
+-	$(E) "BUILDVM   $@"
++	$(E) $(Q)$(BUILDVM_X) -m recdef -o $@ $(LJLIB_C)
+ 	$(Q)$(BUILDVM_X) -m recdef -o $@ $(LJLIB_C)
+ 
+ $(LIB_VMDEF): $(BUILDVM_T) $(LJLIB_C)
+-	$(E) "BUILDVM   $@"
++	$(E) $(Q)$(BUILDVM_X) -m vmdef -o $(LIB_VMDEFP) $(LJLIB_C)
+ 	$(Q)$(BUILDVM_X) -m vmdef -o $(LIB_VMDEFP) $(LJLIB_C)
+ 
+ lj_folddef.h: $(BUILDVM_T) lj_opt_fold.c
+-	$(E) "BUILDVM   $@"
++	$(E) $(Q)$(BUILDVM_X) -m folddef -o $@ lj_opt_fold.c
+ 	$(Q)$(BUILDVM_X) -m folddef -o $@ lj_opt_fold.c
+ 
+ ##############################################################################
+@@ -634,21 +634,23 @@ lj_folddef.h: $(BUILDVM_T) lj_opt_fold.c
+ ##############################################################################
+ 
+ %.o: %.c
+-	$(E) "CC        $@"
++	$(E) $(Q)$(TARGET_DYNCC) $(TARGET_ACFLAGS) -c -o $(@:.o=_dyn.o) $<
+ 	$(Q)$(TARGET_DYNCC) $(TARGET_ACFLAGS) -c -o $(@:.o=_dyn.o) $<
++	$(E) $(Q)$(TARGET_CC) $(TARGET_ACFLAGS) -c -o $@ $<
+ 	$(Q)$(TARGET_CC) $(TARGET_ACFLAGS) -c -o $@ $<
+ 
+ %.o: %.s
+-	$(E) "ASM       $@"
++	$(E) $(Q)$(TARGET_DYNCC) $(TARGET_ACFLAGS) -c -o $(@:.o=_dyn.o) $<
+ 	$(Q)$(TARGET_DYNCC) $(TARGET_ACFLAGS) -c -o $(@:.o=_dyn.o) $<
++	$(E) $(Q)$(TARGET_CC) $(TARGET_ACFLAGS) -c -o $@ $<
+ 	$(Q)$(TARGET_CC) $(TARGET_ACFLAGS) -c -o $@ $<
+ 
+ $(LUAJIT_O):
+-	$(E) "CC        $@"
++	$(E) $(Q)$(TARGET_STCC) $(TARGET_ACFLAGS) -c -o $@ $<
+ 	$(Q)$(TARGET_STCC) $(TARGET_ACFLAGS) -c -o $@ $<
+ 
+ $(HOST_O): %.o: %.c
+-	$(E) "HOSTCC    $@"
++	$(E) $(Q)$(HOST_CC) $(HOST_ACFLAGS) -c -o $@ $<
+ 	$(Q)$(HOST_CC) $(HOST_ACFLAGS) -c -o $@ $<
+ 
+ include Makefile.dep
+@@ -658,18 +660,20 @@ include Makefile.dep
+ ##############################################################################
+ 
+ $(LUAJIT_A): $(LJVMCORE_O)
+-	$(E) "AR        $@"
++	$(E) $(Q)$(TARGET_AR) $@ $(LJVMCORE_O)
+ 	$(Q)$(TARGET_AR) $@ $(LJVMCORE_O)
+ 
+ # The dependency on _O, but linking with _DYNO is intentional.
+ $(LUAJIT_SO): $(LJVMCORE_O)
+-	$(E) "DYNLINK   $@"
++	$(E) $(Q)$(TARGET_LD) $(TARGET_ASHLDFLAGS) -o $@ $(LJVMCORE_DYNO) $(TARGET_ALIBS)
+ 	$(Q)$(TARGET_LD) $(TARGET_ASHLDFLAGS) -o $@ $(LJVMCORE_DYNO) $(TARGET_ALIBS)
++	$(E) $(Q)$(TARGET_STRIP) $@
+ 	$(Q)$(TARGET_STRIP) $@
+ 
+ $(LUAJIT_T): $(TARGET_O) $(LUAJIT_O) $(TARGET_DEP)
+-	$(E) "LINK      $@"
++	$(E) $(Q)$(TARGET_LD) $(TARGET_ALDFLAGS) -o $@ $(LUAJIT_O) $(TARGET_O) $(TARGET_ALIBS)
+ 	$(Q)$(TARGET_LD) $(TARGET_ALDFLAGS) -o $@ $(LUAJIT_O) $(TARGET_O) $(TARGET_ALIBS)
++	$(E) $(Q)$(TARGET_STRIP) $@
+ 	$(Q)$(TARGET_STRIP) $@
+ 	$(E) "OK        Successfully built LuaJIT"
+ 
