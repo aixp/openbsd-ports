@@ -1,0 +1,19 @@
+$OpenBSD$
+--- include/ipmib.h.orig	Sat Oct  6 19:50:50 2012
++++ include/ipmib.h	Sat Oct  6 19:50:58 2012
+@@ -209,6 +209,7 @@ typedef enum
+     ICMP4_MASK_REPLY        = 18,
+ } ICMP4_TYPE, *PICMP4_TYPE;
+ 
++/*
+ typedef enum
+ {
+     ICMP6_DST_UNREACH          =   1,
+@@ -227,6 +228,7 @@ typedef enum
+     ND_REDIRECT                = 137,
+     ICMP6_V2_MEMBERSHIP_REPORT = 143,
+ } ICMP6_TYPE, *PICMP6_TYPE;
++*/
+ 
+ typedef struct _MIBICMPSTATS_EX
+ {

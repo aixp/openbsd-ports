@@ -1,0 +1,11 @@
+$OpenBSD$
+--- dlls/ntdll/server.c.orig	Sun Oct  7 02:39:31 2012
++++ dlls/ntdll/server.c	Sun Oct  7 02:39:44 2012
+@@ -32,6 +32,7 @@
+ #include <lwp.h>
+ #endif
+ #ifdef HAVE_PTHREAD_NP_H
++# include <pthread.h>
+ # include <pthread_np.h>
+ #endif
+ #include <signal.h>

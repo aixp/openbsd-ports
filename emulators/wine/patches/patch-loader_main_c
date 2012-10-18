@@ -1,0 +1,21 @@
+$OpenBSD$
+--- loader/main.c.orig	Sat Oct  6 22:22:59 2012
++++ loader/main.c	Sat Oct  6 23:29:32 2012
+@@ -211,6 +211,8 @@ int main( int argc, char *argv[] )
+     char error[1024];
+     int i;
+ 
++    printf("wine:main\n");
++
+     if (!getenv( "WINELOADERNOEXEC" ))  /* first time around */
+     {
+         static char noexec[] = "WINELOADERNOEXEC=1";
+@@ -233,6 +235,8 @@ int main( int argc, char *argv[] )
+         for (i = 0; wine_main_preload_info[i].size; i++)
+             reserve_area( wine_main_preload_info[i].addr, wine_main_preload_info[i].size );
+     }
++
++    printf("before wine_init\n");
+ 
+     wine_init( argc, argv, error, sizeof(error) );
+     fprintf( stderr, "wine: failed to initialize: %s\n", error );

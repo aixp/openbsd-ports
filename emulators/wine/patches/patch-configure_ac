@@ -1,0 +1,20 @@
+$OpenBSD$
+--- configure.ac.orig	Sat Oct  6 20:27:57 2012
++++ configure.ac	Sat Oct  6 23:33:07 2012
+@@ -862,6 +862,7 @@ case $host_os in
+           WINE_TRY_CFLAGS([-Wl,--section-start,.interp=0x7bf00400],
+                           [case $host_os in
+                            freebsd* | kfreebsd*-gnu) LDEXECFLAGS="$LDEXECFLAGS -Wl,--section-start,.interp=0x60000400" ;;
++                           openbsd*) LDEXECFLAGS="$LDEXECFLAGS -Wl,--section-start,.interp=0x50000400" ;;
+                            *) LDEXECFLAGS="$LDEXECFLAGS -Wl,--section-start,.interp=0x7bf00400" ;;
+                            esac
+                           ])
+@@ -945,7 +946,7 @@ dnl **** Check for pthread ****
+ 
+ if test "$ac_cv_header_pthread_h" = "yes"
+ then
+-    AC_CHECK_LIB(pthread,pthread_create,[AC_SUBST(LIBPTHREAD,"-lpthread")])
++    AC_CHECK_LIB(pthread,pthread_create,[AC_SUBST(LIBPTHREAD,"-pthread")])
+ fi
+ WINE_ERROR_WITH(pthread,[test "x$LIBPTHREAD" = "x"],[pthread ${notice_platform}development files not found.
+ Wine cannot support threads without libpthread.])

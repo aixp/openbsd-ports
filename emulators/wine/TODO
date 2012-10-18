@@ -1,0 +1,33 @@
+Status: It does not work
+    (memory management related, see libs/wine/mmap.c, dlls/ntdll)
+
+low prio: configure: WARNING: unrecognized options: --disable-silent-rules
+
+configure: WARNING: prelink not found, base address of core dlls won't be set correctly.
+
+fontforge to build depends?
+
+machdep.userldt=1
+
+analyzing libs/wine/mmap.c:
+    seems ok
+
+dlls/ntdll/ntdll.so requires pthread
+    ok
+
+see also:
+    http://wiki.winehq.org/OpenBSD
+    old patches:
+        http://www.openbsd.org/cgi-bin/cvsweb/ports/emulators/wine/patches/?hideattic=0
+    FreeBSD port:
+        http://www.freebsd.org/cgi/cvsweb.cgi/ports/emulators/wine-devel/
+        http://www.freebsd.org/cgi/cvsweb.cgi/ports/emulators/wine/
+
+.interp=xxxx link option in loader/main.c prevent ld.so work normally
+    do not use it or use 0x50000400...
+
+see libs/wine/mmap.c on problems (ntdll dlopen problems etc.)
+    use Ctrl+\ key to make core of hanged program
+    LD_CONFIG=all to debug dlopen
+
+-lpthread for ntdll (why -pthread does not work?)

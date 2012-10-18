@@ -1,0 +1,20 @@
+$OpenBSD$
+--- dlls/iphlpapi/ipstats.c.orig	Sat Oct  6 19:24:49 2012
++++ dlls/iphlpapi/ipstats.c	Sat Oct  6 19:46:12 2012
+@@ -109,6 +109,7 @@
+ #include <sys/protosw.h>
+ #endif
+ #ifdef HAVE_SYS_SYSCTL_H
++#include <sys/param.h>
+ #include <sys/sysctl.h>
+ #endif
+ #ifdef HAVE_KSTAT_H
+@@ -899,7 +900,7 @@ DWORD WINAPI GetIpStatisticsEx(PMIB_IPSTATS stats, DWO
+         }
+         if (kc) kstat_close( kc );
+     }
+-#elif defined(HAVE_SYS_SYSCTL_H) && defined(IPCTL_STATS) && (defined(HAVE_STRUCT_IPSTAT_IPS_TOTAL) || defined(HAVE_STRUCT_IP_STATS_IPS_TOTAL))
++#elif (defined(HAVE_SYS_SYSCTL_H) && defined(IPCTL_STATS) && (defined(HAVE_STRUCT_IPSTAT_IPS_TOTAL) || defined(HAVE_STRUCT_IP_STATS_IPS_TOTAL))) && !defined(__OpenBSD__)
+     {
+         int mib[] = {CTL_NET, PF_INET, IPPROTO_IP, IPCTL_STATS};
+ #define MIB_LEN (sizeof(mib) / sizeof(mib[0]))

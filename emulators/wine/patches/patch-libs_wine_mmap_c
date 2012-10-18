@@ -1,0 +1,95 @@
+$OpenBSD$
+--- libs/wine/mmap.c.orig	Sun Oct  7 03:26:04 2012
++++ libs/wine/mmap.c	Sun Oct  7 05:05:43 2012
+@@ -82,6 +82,23 @@ static inline int get_fdzero(void)
+     return fd;
+ }
+ 
++static void * my_mmap (const char *from, void *addr, size_t len, int prot, int flags, int fd, off_t offset)
++{
++    void * res;
++
++/*
++    if (flags & MAP_TRYFIXED) {
++        flags &= ~MAP_TRYFIXED;
++    }
++*/
++
++    res = mmap(addr, len, prot, flags, fd, offset);
++    if (res != MAP_FAILED) {
++        printf("%s: mmap(%p, %d, 0x%02x, 0x%04x, %d, %d) = %p\n", from, addr, len, prot, flags, fd, (int)offset, res);
++    }
++    return res;
++}
++
+ #if (defined(__svr4__) || defined(__NetBSD__)) && !defined(MAP_TRYFIXED)
+ /***********************************************************************
+  *             try_mmap_fixed
+@@ -218,7 +235,7 @@ void *wine_anon_mmap( void *start, size_t size, int pr
+             return start;
+ #endif
+     }
+-    return mmap( start, size, prot, flags, get_fdzero(), 0 );
++    return my_mmap( "wine_anon_mmap", start, size, prot, flags, get_fdzero(), 0 );
+ }
+ 
+ 
+@@ -237,8 +254,9 @@ static inline int mmap_reserve( void *addr, size_t siz
+ #elif defined(__APPLE__)
+     return try_mmap_fixed( addr, size, PROT_NONE, flags, get_fdzero(), 0 );
+ #endif
+-    ptr = mmap( addr, size, PROT_NONE, flags, get_fdzero(), 0 );
++    ptr = my_mmap( "mmap_reserve", addr, size, PROT_NONE, flags, get_fdzero(), 0 );
+     if (ptr != addr && ptr != (void *)-1)  munmap( ptr, size );
++    // if (ptr == addr && ptr != MAP_FAILED)  munmap( ptr, size );
+     return (ptr == addr);
+ }
+ 
+@@ -356,6 +374,10 @@ void mmap_init(void)
+     {
+         /* if we don't have a preloader, try to reserve some space below 2Gb */
+         reserve_area( (void *)0x00110000, (void *)0x40000000 );
++
++//	reserve_area( (void *)0x00110000, (void *)0x7ffe0000 );
++
++//	reserve_area( (void *)0x20000000, (void *)0x40000000 );
+     }
+ 
+     /* check for a reserved area starting at the user space limit */
+@@ -371,20 +393,22 @@ void mmap_init(void)
+         }
+     }
+ 
+-    if (stack_ptr >= user_space_limit)
+-    {
+-        char *end = 0;
+-        char *base = stack_ptr - ((unsigned int)stack_ptr & granularity_mask) - (granularity_mask + 1);
+-        if (base > user_space_limit) reserve_area( user_space_limit, base );
+-        base = stack_ptr - ((unsigned int)stack_ptr & granularity_mask) + (granularity_mask + 1);
+-#if defined(linux) || defined(__FreeBSD__) || defined (__FreeBSD_kernel__) || defined(__DragonFly__)
+-        /* Heuristic: assume the stack is near the end of the address */
+-        /* space, this avoids a lot of futile allocation attempts */
+-        end = (char *)(((unsigned long)base + 0x0fffffff) & 0xf0000000);
+-#endif
+-        reserve_area( base, end );
+-    }
+-    else reserve_area( user_space_limit, 0 );
++    reserve_area(user_space_limit, 0xa0000000);
++
++//    if (stack_ptr >= user_space_limit)
++//    {
++//        char *end = 0;
++//        char *base = stack_ptr - ((unsigned int)stack_ptr & granularity_mask) - (granularity_mask + 1);
++//        if (base > user_space_limit) reserve_area( user_space_limit, base );
++//        base = stack_ptr - ((unsigned int)stack_ptr & granularity_mask) + (granularity_mask + 1);
++//#if defined(linux) || defined(__FreeBSD__) || defined (__FreeBSD_kernel__) || defined(__DragonFly__)
++//        /* Heuristic: assume the stack is near the end of the address */
++//        /* space, this avoids a lot of futile allocation attempts */
++//        end = (char *)(((unsigned long)base + 0x0fffffff) & 0xf0000000);
++//#endif
++//        reserve_area( base, end );
++//    }
++//    else reserve_area( user_space_limit, 0 );
+ 
+     /* reserve the DOS area if not already done */
+ 

@@ -1,0 +1,12 @@
+$OpenBSD$
+--- configure.ac.orig	Sat Oct  6 20:27:57 2012
++++ configure.ac	Sat Oct  6 20:28:14 2012
+@@ -945,7 +945,7 @@ dnl **** Check for pthread ****
+ 
+ if test "$ac_cv_header_pthread_h" = "yes"
+ then
+-    AC_CHECK_LIB(pthread,pthread_create,[AC_SUBST(LIBPTHREAD,"-lpthread")])
++    AC_CHECK_LIB(pthread,pthread_create,[AC_SUBST(LIBPTHREAD,"-pthread")])
+ fi
+ WINE_ERROR_WITH(pthread,[test "x$LIBPTHREAD" = "x"],[pthread ${notice_platform}development files not found.
+ Wine cannot support threads without libpthread.])
