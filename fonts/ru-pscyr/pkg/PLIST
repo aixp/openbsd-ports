@@ -683,7 +683,6 @@ share/texmf-local/tex/latex/pscyr/t2dfaq.fd
 share/texmf-local/tex/latex/pscyr/t2dfjn.fd
 share/texmf-local/tex/latex/pscyr/t2dftx.fd
 @exec %D/bin/mktexlsr
-@exec %D/bin/updmap-sys --enable Map=pscyr.map
+@exec %D/bin/updmap-sys --force --enable Map=pscyr.map
 @unexec %D/bin/mktexlsr
-@unexec %D/bin/updmap-sys --disable Map=pscyr.map
-
+@unexec %D/bin/updmap-sys --force --disable Map=pscyr.map
