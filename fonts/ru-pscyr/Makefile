@@ -3,7 +3,7 @@
 COMMENT=		cyrillic PostScript Type1 fonts to use with TeX
 
 DISTNAME=		pscyr-0.4d_beta9
-REVISION=		5
+REVISION=		1
 PKGNAME=		ru-${DISTNAME}
 CATEGORIES=		fonts russian print
 
