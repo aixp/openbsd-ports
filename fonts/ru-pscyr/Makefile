@@ -5,15 +5,13 @@ COMMENT=		cyrillic PostScript Type1 fonts to use with TeX
 DISTNAME=		pscyr-0.4d_beta9
 REVISION=		1
 PKGNAME=		ru-${DISTNAME}
-CATEGORIES=		fonts russian print
+CATEGORIES=		fonts print
 
 MAINTAINER=		Alexander Yurchenko <grange@openbsd.org>
 
 # Free redistribution is permitted without fonts files modifications
 PERMIT_PACKAGE_CDROM=	may not sell
 PERMIT_PACKAGE_FTP=	Yes
-PERMIT_DISTFILES_CDROM=	may not sell
-PERMIT_DISTFILES_FTP=	Yes
 
 MASTER_SITES=		ftp://scon155.phys.msu.su/pub/russian/psfonts/0.4d-beta/
 MASTER_SITES0=		ftp://scon155.phys.msu.su/pub/russian/psfonts/0.4d-beta/T2D/
