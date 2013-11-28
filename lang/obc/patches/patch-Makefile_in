@@ -1,0 +1,12 @@
+$OpenBSD$
+--- Makefile.in.orig	Thu Nov 28 13:48:39 2013
++++ Makefile.in	Thu Nov 28 13:49:08 2013
+@@ -91,7 +91,7 @@ else
+ endif
+ 
+ ifdef ENABLE_DEBUGGER
+-  PREDIRS += lablgtk
++#  PREDIRS += lablgtk
+   SUBDIRS += debugger
+   BUILD += obxdeb obdb
+   DEBUILD += obdb0

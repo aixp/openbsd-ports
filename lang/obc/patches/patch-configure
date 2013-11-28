@@ -1,0 +1,12 @@
+$OpenBSD$
+--- configure.orig	Thu Nov 28 13:44:58 2013
++++ configure	Thu Nov 28 13:47:37 2013
+@@ -3687,7 +3687,7 @@ $as_echo "#define ENABLE_JIT 1" >>confdefs.h
+ ;;
+     esac
+     case $host in
+-        *-*-darwin*|*-*-linux*)
++        *-*-darwin*|*-*-linux*|*-*-openbsd*)
+ 
+ $as_echo "#define USE_MPROTECT 1" >>confdefs.h
+ ;;

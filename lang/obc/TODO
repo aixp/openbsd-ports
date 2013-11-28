@@ -1,4 +1,4 @@
-support non-i386 architectures (at least AMD64)
+support non-i386 architectures (at least amd64, armv7)
 
 CoordTransformTest regression test:
 	temporary solution implemented (mprotect call moved to other place)
